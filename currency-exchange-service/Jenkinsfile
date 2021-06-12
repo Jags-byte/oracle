@@ -41,10 +41,8 @@ pipeline {
          }
          stage('Push Docker Image') {
             steps {
-                dir("currency-exchange-service") {
-                	docker.withRegistry('https://registry.hub.docker.com', 'JagsDockerID') {
-						sh "docker push jagsmdocker/currency-exchange"
-					}
+                docker.withRegistry('https://registry.hub.docker.com', 'JagsDockerID') {
+					sh "docker push jagsmdocker/currency-exchange"
 				}
              }
          }
