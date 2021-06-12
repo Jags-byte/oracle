@@ -8,7 +8,7 @@ metadata:
   name: currency-exchange
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: currency-exchange
@@ -23,26 +23,22 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: in28min/mmv2-currency-exchange-service:0.0.14-SNAPSHOT
+      - image: jagsmdocker/kube-currency-exchange-service:0.0.14-SNAPSHOT
         imagePullPolicy: IfNotPresent
-        name: mmv2-currency-exchange-service
-        readinessProbe:
-          httpGet:
-            port: 8000
-            path: /actuator/health/readiness
-        livenessProbe:
-          httpGet:
-            port: 8000
-            path: /actuator/health/liveness
+        name: kube-currency-exchange-service
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
   labels:
     app: currency-exchange
   name: currency-exchange
   namespace: default
+  resourceVersion: "443013"
+  selfLink: /api/v1/namespaces/default/services/currency-exchange
 spec:
   ports:
   - port: 8000
