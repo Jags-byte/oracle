@@ -32,6 +32,15 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+
+                dir("currency-exchange-service") {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
+
+            }
+        }
     }
 }
 
