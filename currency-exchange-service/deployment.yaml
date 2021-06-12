@@ -23,7 +23,7 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: jagsmdocker/kube-currency-exchange-service:0.0.14-SNAPSHOT
+      - image: jagsmdocker/kube-currency-exchange-service:0.0.15-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: kube-currency-exchange-service
       restartPolicy: Always
@@ -33,13 +33,59 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"labels":{"app":"currency-exchange"},"name":"currency-exchange","namespace":"default","resourceVersion":"443013","selfLink":"/api/v1/namespaces/default/services/currency-exchange"},"spec":{"ports":[{"port":8000,"protocol":"TCP","targetPort":8000}],"selector":{"app":"currency-exchange"},"sessionAffinity":"None","type":"LoadBalancer"}}
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
   labels:
     app: currency-exchange
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:cloud.google.com/neg: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":8000,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"service.kubernetes.io/load-balancer-cleanup": {}
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: kube-controller-manager
+    operation: Update
   name: currency-exchange
   namespace: default
-  resourceVersion: "443013"
+  resourceVersion: "14357618"
   selfLink: /api/v1/namespaces/default/services/currency-exchange
+  uid: f7e1f237-31c6-4276-b43d-8f6c05054ac8
 spec:
+  externalTrafficPolicy: Cluster
   ports:
   - port: 8000
     protocol: TCP
@@ -48,3 +94,7 @@ spec:
     app: currency-exchange
   sessionAffinity: None
   type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+  
