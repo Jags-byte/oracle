@@ -39,13 +39,6 @@ pipeline {
                 }
             }
          }
-         stage('Push Docker Image') {
-            steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'JagsDockerID') {
-					sh "docker push jagsmdocker/currency-exchange"
-				}
-             }
-         }
        
     }
 }
