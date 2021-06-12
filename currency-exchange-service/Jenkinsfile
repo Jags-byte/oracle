@@ -26,21 +26,13 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     dir("currency-exchange-service") {
-                    	junit '**/target/surefire-reports/TEST-*.xml'
+                    	//junit '**/target/surefire-reports/TEST-*.xml'
                         archiveArtifacts 'target/*.jar'
                     }
                 }
             }
         }
-        stage('Test') {
-            steps {
-
-                dir("currency-exchange-service") {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
-
-            }
-        }
+       
     }
 }
 
