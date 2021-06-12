@@ -25,7 +25,7 @@ class CurrencyExchangeServiceApplicationTests {
 				.thenReturn(currEx);
 		CurrencyExchange ex = repo.findByFromAndTo("USD", "INR");
 		double actualRes = ex.getConversionMultiple().doubleValue();
-		assertEquals(100, actualRes);
+		assertEquals(101, actualRes);
 	}
 
 }
