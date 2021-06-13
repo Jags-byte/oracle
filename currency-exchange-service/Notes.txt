@@ -1,0 +1,32 @@
+
+Coding Assignment (Complete and push changes ahead of the next round interview)
+
+Create a simple Service Software for a Water filter company as a micro-service. 
+With this application, an administrator should be able to add water filter installation, maintenance, or repair tickets and 
+service agents will be able to view the list of tickets assigned to them and update ticket status details. 
+Feel free to assume any functional requirements/attributes needed while implementing the solution. 
+We expect the application to be exposed via REST endpoints. Create also a web frontend application that could be used by admins and agents after login.
+
+Summary of Functional requirements are given below:
+
+• Administrator should be able to create water filter installation, maintenance, or repair tickets
+
+• Service agents should be able to view and update status details of repair tickets assigned to them.
+
+Few non-functional requirements are
+
+• There should be sufficient test coverage (unit / integration tests) and code quality/security checks.
+
+• Service(s) should be observable, it should have sufficient logs and metrics
+
+• Service(s) should be containerized and deploy-able to Kubernetes
+
+• Automate all stages within a CI/CD pipeline
+
+Expected Artifacts:
+
+• Architecture diagram and sequence diagram
+
+• Code along with unit and integration test case
+
+• Docker File, Kubernetes manifest, Pipeline Script
