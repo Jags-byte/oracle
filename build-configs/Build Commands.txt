@@ -1,0 +1,40 @@
+docker run --name jenkins-blueocean --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume jenkins-docker-certs:/certs/client:ro ^
+  --publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:1.1
+  
+
+
+Trial
+~~~~~~~~~~~~
+docker run --name jenkins-blueocean --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume some-docker-certs-client:/certs/client:ro ^
+  -e DOCKER_TLS_CERTDIR=/certs ^
+  --publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:1.1
+  
+  
+
+DOCKEr
+~~~~~~~~~~~~~~~~~~```
+docker run --privileged --name some-docker -d ^
+    --network jenkins --network-alias docker ^
+    -e DOCKER_TLS_CERTDIR=/certs ^
+    -v some-docker-certs-ca:/certs/ca ^
+    -v some-docker-certs-client:/certs/client ^
+    docker:dind
+	
+
+docker run --rm --network jenkins ^
+    -e DOCKER_TLS_CERTDIR=/certs ^
+    -v some-docker-certs-client:/certs/client:ro ^
+    docker:latest version
+	
+docker run -it --rm --network jenkins ^
+    -e DOCKER_TLS_CERTDIR=/certs ^
+    -v some-docker-certs-client:/certs/client:ro ^
+    docker:latest sh
