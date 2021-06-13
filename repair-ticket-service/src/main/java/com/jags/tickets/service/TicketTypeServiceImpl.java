@@ -12,7 +12,7 @@ public class TicketTypeServiceImpl implements TicketTypeService{
 	@Autowired
 	TicketTypeRepository ticketTypeRepo;
 	
-	public void addTicketType(TicketType ticketType) {
-		ticketTypeRepo.save(ticketType);
+	public TicketType addTicketType(TicketType ticketType) {
+		return ticketTypeRepo.save(ticketType);
 	}
 }

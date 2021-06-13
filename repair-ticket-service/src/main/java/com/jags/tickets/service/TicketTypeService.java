@@ -4,5 +4,5 @@ import com.jags.tickets.entity.TicketType;
 
 public interface TicketTypeService {
 
-	public void addTicketType(TicketType ticketType); 
+	public TicketType addTicketType(TicketType ticketType); 
 }

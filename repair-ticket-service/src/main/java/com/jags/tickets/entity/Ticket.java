@@ -27,12 +27,10 @@ public class Ticket {
 	private String ticketStatus;
 	
 
-	public Ticket(String agentName, int customerId, String ticketType) {
+	public Ticket(String agentName, Customer customer, TicketType ticketType) {
 		this.agentName = agentName;
-		this.customer = new Customer();
-		this.customer.setId(customerId);
-		this.ticketType = new TicketType();
-		this.ticketType.setType(ticketType);
+		this.customer = customer;
+		this.ticketType = ticketType;
 		ticketStatus = Constants.TICKET_ASSIGNED;
 	}
 
