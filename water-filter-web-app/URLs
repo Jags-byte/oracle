@@ -1,0 +1,7 @@
+http://localhost:8000/users
+
+http://localhost:8000/users/authorities/jags
+http://localhost:8000/users/authorities/user
+http://localhost:8000/users/authorities/admin
+
+http://localhost:8000/swagger-ui/
