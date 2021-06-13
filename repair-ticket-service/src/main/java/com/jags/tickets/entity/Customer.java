@@ -27,6 +27,10 @@ public class Customer {
 	}
 
 	
+	public Customer(int customerId) {
+		this.id = customerId;
+	}
+
 	/**
 	 * @return the id
 	 */

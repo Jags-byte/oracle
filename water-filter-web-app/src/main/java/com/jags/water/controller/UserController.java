@@ -3,6 +3,8 @@ package com.jags.water.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,15 +25,15 @@ public class UserController {
 	@GetMapping("users")
 	@ApiOperation(value = "Find all User details", notes = "This API is for retrieving all user details",
 			tags = {"User"}, httpMethod = "GET")
-	public List<User> retrieveAllUsers() {
-		return userService.retrieveAllUsers();
+	public ResponseEntity<List<User>> retrieveAllUsers() {
+		return new ResponseEntity<>(userService.retrieveAllUsers(), HttpStatus.OK);
 	}
 	
 	@GetMapping("users/authorities/{username}")
 	@ApiOperation(value = "Retrieve roles for a User", notes = "This API is for retrieving all roles for a user",
 			tags = {"User"}, httpMethod = "GET")
-	public List<String> retrieveRoles(@PathVariable String username) {
-		return userService.retrieveRoles(username);
+	public ResponseEntity<List<String>> retrieveRoles(@PathVariable String username) {
+		return new ResponseEntity<>(userService.retrieveRoles(username), HttpStatus.OK);
 	}
 	
 }

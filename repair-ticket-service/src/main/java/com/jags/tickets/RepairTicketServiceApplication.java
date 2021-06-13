@@ -14,10 +14,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.jags.tickets.entity.Customer;
 import com.jags.tickets.entity.Ticket;
-import com.jags.tickets.entity.TicketType;
 import com.jags.tickets.service.CustomerService;
 import com.jags.tickets.service.TicketService;
-import com.jags.tickets.service.TicketTypeService;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -30,9 +28,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class RepairTicketServiceApplication implements CommandLineRunner{
 	
 	Logger logger = LoggerFactory.getLogger(RepairTicketServiceApplication.class);
-
-	@Autowired
-	TicketTypeService ticketTypeService;
+	
 	@Autowired
 	CustomerService customerService;
 	@Autowired
@@ -64,11 +60,6 @@ public class RepairTicketServiceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		logger.info("Inside RepairTicketServiceApplication");
 		
-		TicketType t1 = ticketTypeService.addTicketType(new TicketType("FREE SERVICE", "Free Service within the warranty period"));
-		TicketType t2 = ticketTypeService.addTicketType(new TicketType("PAID SERVICE", "Paid Service"));
-		TicketType t3 = ticketTypeService.addTicketType(new TicketType("URGENT REPAIR", "Urgent Request for Repair"));
-		TicketType t4 = ticketTypeService.addTicketType(new TicketType("CUSTOMER COMPLAINT", "Customer complaint"));
-		
 		Customer c1  = customerService.addCustomer(new Customer("Mike George", "Mankato Mississippi 96522", "234 234 2345"));
 		Customer c2  = customerService.addCustomer(new Customer("Bruce Wills", "Roseville NH 11523", "536 234 2345"));
 		Customer c3  = customerService.addCustomer(new Customer("Tina M", "San Antonio MI 47096", "865 234 2345"));
@@ -77,12 +68,13 @@ public class RepairTicketServiceApplication implements CommandLineRunner{
 		
 		List<String> users = Arrays.asList("agent1", "agent2", "agent3");
 		List<Customer> customers = Arrays.asList(c1, c2, c3, c4, c5);
-		List<TicketType> ticketTypes = Arrays.asList(t1, t2, t3, t4);
+		List<String> ticketDescription = Arrays.asList("FREE SERVICE", "PAID SERVICE", "URGENT REPAIR", "CUSTOMER COMPLAINT");
 		
 		
 		for (int i = 0; i < 100; i++) {
 			ticketService.createTicket(new Ticket(users.get((int) (Math.random() * 100) %3), 
-					customers.get((int) (Math.random() * 100) %5), ticketTypes.get((int) (Math.random() * 100) %4)));
+					ticketDescription.get((int) (Math.random() * 100) %4), 
+					customers.get((int) (Math.random() * 100) %5)));
 		}
 
 	} 

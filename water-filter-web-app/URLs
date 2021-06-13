@@ -5,3 +5,14 @@ http://localhost:8000/users/authorities/user
 http://localhost:8000/users/authorities/admin
 
 http://localhost:8000/swagger-ui/
+
+Ticket Service
+~~~~~~~~~~~~~~~~~~~
+http://localhost:8010/tickets
+http://localhost:8010/tickets/100
+http://localhost:8010/tickets/agents/agent3
+
+POST
+http://localhost:8010/tickets
+http://localhost:8010/tickets/status
+http://localhost:8010/tickets/assign

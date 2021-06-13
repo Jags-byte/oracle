@@ -1,5 +1,7 @@
 package com.jags.tickets.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,20 +20,25 @@ public class Ticket {
 	@NotNull
 	private String agentName;
 
-	@ManyToOne
-	private TicketType ticketType;
+	private String ticketDescription;
 	
 	@ManyToOne
 	private Customer customer;
 	
 	private String ticketStatus;
 	
+	private Date createdDate;
+	
+	private Date modifiedDate;
+	
 
-	public Ticket(String agentName, Customer customer, TicketType ticketType) {
+	public Ticket(String agentName, String ticketDescription, Customer customer) {
 		this.agentName = agentName;
 		this.customer = customer;
-		this.ticketType = ticketType;
+		this.ticketDescription = ticketDescription;
 		ticketStatus = Constants.TICKET_ASSIGNED;
+		this.createdDate = new Date();
+		this.modifiedDate = new Date();
 	}
 
 
@@ -73,22 +80,6 @@ public class Ticket {
 
 
 	/**
-	 * @return the ticketType
-	 */
-	public TicketType getTicketType() {
-		return ticketType;
-	}
-
-
-	/**
-	 * @param ticketType the ticketType to set
-	 */
-	public void setTicketType(TicketType ticketType) {
-		this.ticketType = ticketType;
-	}
-
-
-	/**
 	 * @return the customer
 	 */
 	public Customer getCustomer() {
@@ -117,6 +108,54 @@ public class Ticket {
 	 */
 	public void setTicketStatus(String ticketStatus) {
 		this.ticketStatus = ticketStatus;
+	}
+
+
+	/**
+	 * @return the createdDate
+	 */
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+
+	/**
+	 * @param createdDate the createdDate to set
+	 */
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
+	/**
+	 * @return the modifiedDate
+	 */
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+
+	/**
+	 * @param modifiedDate the modifiedDate to set
+	 */
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+
+	/**
+	 * @return the ticketDescription
+	 */
+	public String getTicketDescription() {
+		return ticketDescription;
+	}
+
+
+	/**
+	 * @param ticketDescription the ticketDescription to set
+	 */
+	public void setTicketDescription(String ticketDescription) {
+		this.ticketDescription = ticketDescription;
 	}
 	
 	
