@@ -16,11 +16,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-
+	
+	@Autowired
+	CustomAuthenticationSuccessHandler successHandler; 
+	
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login", "/h2-console/**", "/swagger-ui/**").permitAll().anyRequest()
-				.authenticated().and().formLogin().loginPage("/login") // Form Based Authentication
-				.defaultSuccessUrl("/home", true).and().csrf().disable() // For H2 Console.
+		http.authorizeRequests().antMatchers("/login", "/h2-console/**", "/swagger-ui/**").permitAll()
+				.anyRequest().authenticated()
+				.and().formLogin().loginPage("/login") // Form Based Authentication
+				.successHandler(successHandler)
+				//.defaultSuccessUrl("/home", true)
+				.and().csrf().disable() // For H2 Console.
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
 		// Disable X-Frame options
