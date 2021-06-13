@@ -1,0 +1,6 @@
+#Authentication
+gcloud auth login
+
+#Connect to Cluster
+gcloud container clusters get-credentials jags-cluster --zone us-central1-c --project peak-vista-313817
+
