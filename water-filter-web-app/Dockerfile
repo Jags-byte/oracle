@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8000
-ADD target/currency-exchange-service-0.0.15-SNAPSHOT.jar currency-exchange.jar
+ADD target/water-filter-web-app-0.0.1-SNAPSHOT.jar water-filter-web-app.jar
 ENTRYPOINT ["java","-jar","/currency-exchange.jar"]
