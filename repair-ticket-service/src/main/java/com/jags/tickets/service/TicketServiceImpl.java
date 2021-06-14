@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.jags.tickets.common.Constants;
 import com.jags.tickets.entity.Customer;
 import com.jags.tickets.entity.Ticket;
 import com.jags.tickets.model.TicketModel;
@@ -24,7 +26,7 @@ public class TicketServiceImpl implements TicketService{
 
 	@Override
 	public List<Ticket> findAllTickets() {
-		return ticketRepository.findAll();
+		return ticketRepository.findAll(Sort.by(Sort.Direction.DESC, "createdDate"));
 	}
 
 	@Override
@@ -34,7 +36,7 @@ public class TicketServiceImpl implements TicketService{
 
 	@Override
 	public List<Ticket> findTicketsByUser(String username) {
-		return ticketRepository.findTicketByAgentName(username);
+		return ticketRepository.findTicketByAgentNameOrderByCreatedDateDesc(username);
 	}
 
 	@Override
@@ -79,7 +81,13 @@ public class TicketServiceImpl implements TicketService{
 			ticket.setCreatedDate(d);
 		} 
 		ticket.setModifiedDate(d);
+		ticket.setTicketStatus(Constants.TICKET_ASSIGNED);
 		return ticket;
+	}
+
+	@Override
+	public void deleteTicket(int ticketId) {
+		ticketRepository.deleteById(ticketId);
 	}
 
 }

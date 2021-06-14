@@ -1,6 +1,5 @@
 package com.jags.tickets.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +44,7 @@ public class TicketsController {
 	}
 	
 	@GetMapping("tickets/{ticketId}")
-	@ApiOperation(value = "Find all Ticket details", notes = "This API is for retrieving all Ticket details",
+	@ApiOperation(value = "Find Ticket details", notes = "This API is for retrieving Ticket details",
 			tags = {"Ticket"}, httpMethod = "GET")
 	public ResponseEntity<Ticket> retrieveTicket(@PathVariable int ticketId) throws TicketNotFoundException {
 		logger.info(">>> Entering retrieve ticket service");
@@ -54,6 +55,16 @@ public class TicketsController {
 		return new ResponseEntity<>(ticket, HttpStatus.OK);
 	}
 
+	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost}:8000")
+	@DeleteMapping("tickets/{ticketId}")
+	@ApiOperation(value = "Delete Ticket", notes = "This API is for deleting a particular ticket.",
+			tags = {"Ticket"}, httpMethod = "GET")
+	public ResponseEntity<String> deleteTicket(@PathVariable int ticketId) throws TicketNotFoundException {
+		logger.info(">>> Entering delete ticket service");
+		ticketService.deleteTicket(ticketId);
+		return new ResponseEntity<>("Deleted", HttpStatus.OK);
+	}
+	
 	@GetMapping("tickets/agents/{agentName}")
 	@CircuitBreaker(name="all-tickets", fallbackMethod = "retrieveAllTicketsCbFallback")
 	@ApiOperation(value = "Find Agent Tickets", notes = "This API is for retrieving all Ticket details for a particualr Agent",
@@ -63,6 +74,7 @@ public class TicketsController {
 		return new ResponseEntity<>(ticketService.findTicketsByUser(agentName), HttpStatus.OK);
 	}
 
+	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost}:8000")
 	@PostMapping("tickets")
 	@ApiOperation(value = "Create Tickets", notes = "This API is for creating new tickets and assign that to an Agent.",
 			tags = {"Ticket"}, httpMethod = "GET")
@@ -71,11 +83,13 @@ public class TicketsController {
 		return new ResponseEntity<>(ticketService.createTicket(ticket), HttpStatus.CREATED);
 	}
 
+	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost}:8000")
 	@PostMapping("tickets/status")
 	@ApiOperation(value = "Update Ticket Status", notes = "This API is for udpating Ticket Status.",
 			tags = {"Ticket"}, httpMethod = "GET")
 	public ResponseEntity<Ticket> updateTicketStatus(@RequestBody TicketModel ticket) {
 		logger.info(">>> Entering udpate ticket status service");
+		logger.info("Ticket Details: " + ticket);
 		return new ResponseEntity<>(ticketService.updateTicketStatus(ticket.getTicketId(), ticket.getTicketStatus()), HttpStatus.OK);
 	}
 

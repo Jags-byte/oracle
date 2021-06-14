@@ -21,4 +21,6 @@ public interface TicketService {
 
 	public Ticket createTicket(TicketModel ticket);
 
+	public void deleteTicket(int ticketId);
+
 }

@@ -37,8 +37,6 @@ public class Ticket {
 		this.customer = customer;
 		this.ticketDescription = ticketDescription;
 		ticketStatus = Constants.TICKET_ASSIGNED;
-		this.createdDate = new Date();
-		this.modifiedDate = new Date();
 	}
 
 

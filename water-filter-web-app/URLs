@@ -16,3 +16,6 @@ POST
 http://localhost:8010/tickets
 http://localhost:8010/tickets/status
 http://localhost:8010/tickets/assign
+
+"${REPAIR_TICKET_SERVICE_URI:http://localhost}:8010"
+"${FILTER_APP_URI:http://localhost}:8000")

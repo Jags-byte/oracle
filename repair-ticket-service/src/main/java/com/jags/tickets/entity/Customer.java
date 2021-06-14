@@ -1,22 +1,20 @@
 package com.jags.tickets.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Customer {
 	
 	@Id
-	@GeneratedValue
 	private int id;
 	
 	private String name;
 	private String address;
 	private String contactNumber;
 	
-	public Customer(String name, String address, String contactNumber) {
-		super();
+	public Customer(int id, String name, String address, String contactNumber) {
+		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.contactNumber = contactNumber;

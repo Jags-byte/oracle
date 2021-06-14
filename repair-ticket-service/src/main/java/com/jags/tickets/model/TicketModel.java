@@ -1,5 +1,9 @@
 package com.jags.tickets.model;
 
+/**
+ * @author jagad
+ *
+ */
 public class TicketModel {
 	
 	private int ticketId;
@@ -68,6 +72,22 @@ public class TicketModel {
 	 */
 	public void setTicketStatus(String ticketStatus) {
 		this.ticketStatus = ticketStatus;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TicketModel [ticketId=");
+		builder.append(ticketId);
+		builder.append(", agentName=");
+		builder.append(agentName);
+		builder.append(", ticketDescription=");
+		builder.append(ticketDescription);
+		builder.append(", customerId=");
+		builder.append(customerId);
+		builder.append(", ticketStatus=");
+		builder.append(ticketStatus);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

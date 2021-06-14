@@ -10,6 +10,6 @@ import com.jags.tickets.entity.Ticket;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Integer>{
 	
-	public List<Ticket> findTicketByAgentName(String agentName);
+	public List<Ticket> findTicketByAgentNameOrderByCreatedDateDesc(String agentName);
 
 }

@@ -1,7 +1,6 @@
 package com.jags.water.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +21,25 @@ public class FilterController {
 
 	@GetMapping("/admin")
 	public String adminDashboard(Model model) {
-		logger.info("### Inside admin dashboard");
+		logger.info(">>> Inside admin dashboard");
 		List<Ticket> tickets = repairTicketService.retrieveAllTickets();
-		logger.info("### After Ticket Service " + tickets);
-		
-		model.addAttribute("msg", "First Message from Controller");
+		logger.info("After Ticket Service " + tickets);
 		model.addAttribute("tickets", tickets);
+		//Read from config map
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		logger.info("ticketServiceUri: " + ticketServiceUri);
+		model.addAttribute("serviceUri", ticketServiceUri);
+		
 		return "admin";
 	}
 
+	@GetMapping("/admin/add")
+	public String addTicket(Model model) {
+		logger.info(">>> Inside addTicket");
+		//Read from config map
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		logger.info("ticketServiceUri:: " + ticketServiceUri);
+		model.addAttribute("serviceUri", ticketServiceUri);
+		return "add";
+	}
 }

@@ -1,7 +1,10 @@
 package com.jags.tickets;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -60,21 +63,31 @@ public class RepairTicketServiceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		logger.info("Inside RepairTicketServiceApplication");
 		
-		Customer c1  = customerService.addCustomer(new Customer("Mike George", "Mankato Mississippi 96522", "234 234 2345"));
-		Customer c2  = customerService.addCustomer(new Customer("Bruce Wills", "Roseville NH 11523", "536 234 2345"));
-		Customer c3  = customerService.addCustomer(new Customer("Tina M", "San Antonio MI 47096", "865 234 2345"));
-		Customer c4  = customerService.addCustomer(new Customer("Sai Ganesh", "Corona New Mexico 08219", "234 858 2345"));
-		Customer c5  = customerService.addCustomer(new Customer("Philip Mathew", "Muskegon KY 12482", "234 435 9999"));
+		Customer c1  = customerService.addCustomer(new Customer(100, "Mike George", "Mankato Mississippi 96522", "234 234 2345"));
+		Customer c2  = customerService.addCustomer(new Customer(101, "Bruce Wills", "Roseville NH 11523", "536 234 2345"));
+		Customer c3  = customerService.addCustomer(new Customer(102, "Tina M", "San Antonio MI 47096", "865 234 2345"));
+		Customer c4  = customerService.addCustomer(new Customer(103, "Sai Ganesh", "Corona New Mexico 08219", "234 858 2345"));
+		Customer c5  = customerService.addCustomer(new Customer(104, "Philip Mathew", "Muskegon KY 12482", "234 435 9999"));
 		
 		List<String> users = Arrays.asList("agent1", "agent2", "agent3");
 		List<Customer> customers = Arrays.asList(c1, c2, c3, c4, c5);
 		List<String> ticketDescription = Arrays.asList("FREE SERVICE", "PAID SERVICE", "URGENT REPAIR", "CUSTOMER COMPLAINT");
 		
-		
+		List<LocalDate> dateLst = new ArrayList<>();
+		LocalDate date = LocalDate.now();
+		dateLst.add(date);
+		for (int i = 0; i < 3; i++) {
+			date = date.minusDays(1);
+			dateLst.add(date);
+		}
 		for (int i = 0; i < 100; i++) {
-			ticketService.createTicket(new Ticket(users.get((int) (Math.random() * 100) %3), 
+			Ticket t = new Ticket(users.get((int) (Math.random() * 100) %3), 
 					ticketDescription.get((int) (Math.random() * 100) %4), 
-					customers.get((int) (Math.random() * 100) %5)));
+					customers.get((int) (Math.random() * 100) %5));
+			Date d = Date.from(dateLst.get((int) (Math.random() * 100) %3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+			t.setCreatedDate(d);
+			t.setModifiedDate(d);
+			ticketService.createTicket(t);
 		}
 
 	} 
