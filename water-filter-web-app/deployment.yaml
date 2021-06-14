@@ -23,7 +23,7 @@ spec:
         app: water-filter-web-app
     spec:
       containers:
-      - image: jagsmdocker/water-filter-web-app
+      - image: jagsmdocker/water-filter-web-app-0.0.1-snapshot
         imagePullPolicy: IfNotPresent
         name: water-filter-web-app
         envFrom:
@@ -50,7 +50,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  REPAIR_TICKET_SERVICE_URI: http://104.154.178.233
+  REPAIR_TICKET_SERVICE_URI: http://104.154.178.233:8010
 kind: ConfigMap
 metadata:
   name: water-filter-web-app

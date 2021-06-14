@@ -50,7 +50,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  FILTER_APP_URI: http://34.123.104.178
+  FILTER_APP_URI: http://34.123.104.178:8000
 kind: ConfigMap
 metadata:
   name: repair-ticket-service
