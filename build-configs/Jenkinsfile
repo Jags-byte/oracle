@@ -12,26 +12,25 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/Jags-byte/oracle.git'
 
-                dir("currency-exchange-service") {
+                dir("water-filter-web-app") {
                     // Run Maven on a Unix agent.
                     sh "mvn -Dmaven.test.failure.ignore=false clean package"
                 }
-                dir("water-filter-web-app") {
+
+                dir("repair-ticket-service") {
                     // Run Maven on a Unix agent.
                     sh "mvn -Dmaven.test.failure.ignore=false clean package"
                 }
 
             }
-
-            
         }
          stage('Build Docker Image') {
             steps {
-                dir("currency-exchange-service") {
-                    sh "docker build -t jagsmdocker/currency-exchange ."
-                }
                 dir("water-filter-web-app") {
                     sh "docker build -t jagsmdocker/water-filter-web-app ."
+                }
+                dir("repair-ticket-service") {
+                    sh "docker build -t jagsmdocker/repair-ticket-service ."
                 }
             }
          }
@@ -40,12 +39,12 @@ pipeline {
  				DOCKER_HUB_LOGIN = credentials('JagsDockerID')
  			}
             steps {
-                dir("currency-exchange-service") {
-                	sh "docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW"
-                    sh "docker push jagsmdocker/currency-exchange"
-                }
                 dir("water-filter-web-app") {
+                	sh "docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW"
                 	sh "docker push jagsmdocker/water-filter-web-app"
+                }
+                dir("repair-ticket-service") {
+                    sh "docker push jagsmdocker/repair-ticket-service"
                 }
             }
          }       
