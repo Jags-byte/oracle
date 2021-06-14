@@ -19,3 +19,15 @@ http://localhost:8010/tickets/assign
 
 "${REPAIR_TICKET_SERVICE_URI:http://localhost}:8010"
 "${FILTER_APP_URI:http://localhost}:8000")
+
+jagsmdocker/repair-ticket-service
+
+Kubernetes
+~~~~~~~~~~~~~
+Ticket Service: 104.154.178.233
+
+http://104.154.178.233:8010/tickets
+http://104.154.178.233:8010/tickets/100
+http://104.154.178.233:8010/tickets/agents/agent3
+
+App: 34.123.104.178

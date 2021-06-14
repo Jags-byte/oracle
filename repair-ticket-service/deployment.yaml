@@ -4,14 +4,14 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: water-filter-web-app
-  name: water-filter-web-app
+    app: repair-ticket-service
+  name: repair-ticket-service
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: water-filter-web-app
+      app: repair-ticket-service
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,38 +20,38 @@ spec:
   template:
     metadata:
       labels:
-        app: water-filter-web-app
+        app: repair-ticket-service
     spec:
       containers:
-      - image: jagsmdocker/water-filter-web-app
+      - image: jagsmdocker/repair-ticket-service
         imagePullPolicy: IfNotPresent
-        name: water-filter-web-app
+        name: repair-ticket-service
         envFrom:
           - configMapRef:
-              name: water-filter-web-app
+              name: repair-ticket-service
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: water-filter-web-app
-  name: water-filter-web-app
+    app: repair-ticket-service
+  name: repair-ticket-service
   namespace: default
 spec:
   ports:
-  - port: 8000
+  - port: 8010
     protocol: TCP
-    targetPort: 8000
+    targetPort: 8010
   selector:
-    app: water-filter-web-app
+    app: repair-ticket-service
   sessionAffinity: None
   type: LoadBalancer
 ---
 apiVersion: v1
 data:
-  REPAIR_TICKET_SERVICE_URI: http://104.154.178.233
+  FILTER_APP_URI: http://34.123.104.178
 kind: ConfigMap
 metadata:
-  name: water-filter-web-app
+  name: repair-ticket-service
   namespace: default
