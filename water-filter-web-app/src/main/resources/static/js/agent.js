@@ -1,8 +1,10 @@
 $(document).ready(function () {
 	console.log("Inside Document Ready Agent");
     fetchTickets();
-
+    
+    setInterval(retrieveNotifications, 10000);
 });
+
 
 //Retrieves all tickets for an Agent
 function fetchTickets() {
@@ -100,6 +102,52 @@ function updateTicketStatus(btn) {
     		$(btn).show();
     		$("#failureAlert").removeClass("d-none");
 
+        }
+    });
+}
+
+
+//Retrieves all notifications for an Agent
+function retrieveNotifications() {
+   	console.log("Inside retrieveNotifications");
+    var agentName = $("#loggedInAgentName").val();;
+   	var refreshTimestamp = $("#refreshTimestamp").val();;
+   	console.log("agentName: " + agentName);
+    console.log("refreshTimestamp: " + refreshTimestamp);
+    
+    var notificationServiceUri = $("#notificationServiceUri").val() + "/notifications/" 
+    						+ agentName + "/" +refreshTimestamp;
+    
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: notificationServiceUri,
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (mydata) {
+            try{
+	            console.log("Notification Fetch Successful: ", mydata);
+	            mydata.forEach( notification => {
+	            	let content = $('#notificationAlert').html();
+	            	if (content.indexOf(notification.message) == -1) {
+		            	let p = `<p>New ticket assigned -> ${notification.message}</p>`;
+			      		$('#notificationAlert').append(p);
+			      		$("#notificationAlert").removeClass("d-none");
+			      	}
+				});
+				//$("#loadingSpinner").remove();
+	      		//$("#ticketDetailsTable").removeClass("d-none");
+	      	} catch(e) {
+				console.log("Notification Fetch Failed! ", e);
+	      		//$("#loadingSpinner").remove();
+	      		//$("#noResultAlert").removeClass("d-none");
+			}
+	    },
+        error: function (e) {
+			console.log("Fetch Failed! ", e);
+      		$("#loadingSpinner").remove();
+      		$("#noResultAlert").removeClass("d-none");
         }
     });
 }

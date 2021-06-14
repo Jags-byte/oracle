@@ -59,12 +59,14 @@
 			role="alert">Failed to update ticket status!</div>
 		<div id="noResultAlert" class="alert alert-primary mb-5 d-none"
 			role="alert">No Tickets Available.</div>
+		<div id="notificationAlert" class="alert alert-primary mb-5 d-none"
+			role="alert"><p>Notifications</p></div>
 		<div class="d-flex justify-content-center" id="loadingSpinner">
 			<div class="spinner-border" role="status">
 				<span class="sr-only">Loading...</span>
 			</div>
 		</div>
-
+		
 		<div class="table-responsive d-none" id="ticketDetailsTable">
 			<table class="table table-striped table-sm">
 				<thead>
@@ -83,7 +85,9 @@
 			</table>
 		</div>
 		<input type="hidden" id="ticketServiceUri" th:value="${serviceUri}" />
+		<input type="hidden" id="notificationServiceUri" th:value="${notificationServiceUri}" />
 		<input type="hidden" id="loggedInAgentName" th:value="${agentName}" />
+		<input type="hidden" id="refreshTimestamp" th:value="${refreshTimestamp}" />
 	</main>
 
 	<footer class="footer">

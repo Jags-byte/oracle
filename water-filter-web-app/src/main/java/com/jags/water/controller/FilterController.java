@@ -1,5 +1,6 @@
 package com.jags.water.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -44,8 +45,12 @@ public class FilterController {
         logger.info("Agent Name: {}", 	userDetails.getUsername());
 		//Read from config map
 		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		String notificationServiceUri = System.getenv().getOrDefault("NOTIFICATION_SERVICE_URI", "http://localhost:8020");
 		logger.info("ticketServiceUri: " + ticketServiceUri);
+		logger.info("notificationServiceUri: " + notificationServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
+		model.addAttribute("notificationServiceUri", notificationServiceUri);
+		model.addAttribute("refreshTimestamp", new Date().getTime());
 		model.addAttribute("agentName", userDetails.getUsername());
 		
 		return "home";

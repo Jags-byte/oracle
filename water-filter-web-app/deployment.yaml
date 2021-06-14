@@ -51,6 +51,7 @@ spec:
 apiVersion: v1
 data:
   REPAIR_TICKET_SERVICE_URI: http://104.154.178.233:8010
+  NOTIFICATION_SERVICE_URI: http://localhost:8020
 kind: ConfigMap
 metadata:
   name: water-filter-web-app
