@@ -22,7 +22,9 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/login", "/h2-console/**", "/swagger-ui/**").permitAll()
-				.anyRequest().authenticated()
+	       		.antMatchers("/admin/**").hasAnyAuthority("ADMIN") 
+	       		.antMatchers("/home/**").hasAnyAuthority("USER", "ADMIN") 
+	       		.anyRequest().authenticated()
 				.and().formLogin().loginPage("/login") // Form Based Authentication
 				.successHandler(successHandler)
 				//.defaultSuccessUrl("/home", true)
