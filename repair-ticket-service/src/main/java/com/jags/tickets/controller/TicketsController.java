@@ -1,5 +1,6 @@
 package com.jags.tickets.controller;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,12 +17,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jags.tickets.entity.Ticket;
+import com.jags.tickets.event.TicketNotficationEventPublisher;
 import com.jags.tickets.exception.TicketNotFoundException;
 import com.jags.tickets.model.TicketModel;
 import com.jags.tickets.service.TicketService;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
+import io.nats.client.Connection;
+import io.nats.client.Dispatcher;
+import io.nats.client.Nats;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -33,6 +38,9 @@ public class TicketsController {
 	
 	@Autowired
 	TicketService ticketService;
+	
+	@Autowired
+	TicketNotficationEventPublisher eventPublisher;
 	
 	@GetMapping("tickets")
 	@Retry(name="all-tickets", fallbackMethod = "retrieveAllTicketsRetryFallback")
@@ -81,7 +89,11 @@ public class TicketsController {
 			tags = {"Ticket"}, httpMethod = "GET")
 	public ResponseEntity<Ticket> createTicket(@RequestBody TicketModel ticket) {
 		logger.info(">>> Entering create tickets service");
-		return new ResponseEntity<>(ticketService.createTicket(ticket), HttpStatus.CREATED);
+		Ticket t = ticketService.createTicket(ticket);
+		eventPublisher.publishTicketCreationEvent(t.getAgentName(), "New Ticket: " + t.getTicketId());
+		return new ResponseEntity<>(t, HttpStatus.CREATED);
+		
+		
 	}
 
 	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
@@ -119,4 +131,6 @@ public class TicketsController {
 		logger.info(">>> >>> Entering retrieveAllTicketsCbFallback: " + ex.getMessage());
 		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
+	
+	
 }

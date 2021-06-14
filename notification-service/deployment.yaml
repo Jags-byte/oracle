@@ -4,14 +4,14 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: repair-ticket-service
-  name: repair-ticket-service
+    app: notification-service
+  name: notification-service
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: repair-ticket-service
+      app: notification-service
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,23 +20,23 @@ spec:
   template:
     metadata:
       labels:
-        app: repair-ticket-service
+        app: notification-service
     spec:
       containers:
-      - image: jagsmdocker/repair-ticket-service-0.0.2-snapshot
+      - image: jagsmdocker/notification-service-0.0.2-snapshot
         imagePullPolicy: IfNotPresent
-        name: repair-ticket-service
+        name: notification-service
         envFrom:
           - configMapRef:
-              name: repair-ticket-service
+              name: notification-service
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: repair-ticket-service
-  name: repair-ticket-service
+    app: notification-service
+  name: notification-service
   namespace: default
 spec:
   ports:
@@ -44,15 +44,14 @@ spec:
     protocol: TCP
     targetPort: 8010
   selector:
-    app: repair-ticket-service
+    app: notification-service
   sessionAffinity: None
   type: LoadBalancer
 ---
 apiVersion: v1
 data:
-  FILTER_APP_URI: http://34.123.104.178:8000
   NATS_SERVER_URI: nats://35.222.10.147:4222
 kind: ConfigMap
 metadata:
-  name: repair-ticket-service
+  name: notification-service
   namespace: default

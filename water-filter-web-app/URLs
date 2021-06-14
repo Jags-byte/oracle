@@ -31,3 +31,15 @@ http://104.154.178.233:8010/tickets/100
 http://104.154.178.233:8010/tickets/agents/agent3
 
 App: 34.123.104.178
+
+
+NATS
+~~~~~~~~~~~~`
+kubectl create deployment nats-server --image=nats
+kubectl expose deployment nats-server --type=LoadBalancer --port=4222
+
+telnet 35.222.10.147 4222
+pub com.jags.ticket 100
+<Message Body>
+
+jnats://localhost:4222

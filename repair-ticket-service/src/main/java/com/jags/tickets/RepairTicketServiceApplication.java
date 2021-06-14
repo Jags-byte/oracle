@@ -45,7 +45,7 @@ public class RepairTicketServiceApplication implements CommandLineRunner{
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.jags.water.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.jags.tickets.controller"))
 				.paths(PathSelectors.ant("/**/**")).build().apiInfo(apiInfo());
 	}
 	
