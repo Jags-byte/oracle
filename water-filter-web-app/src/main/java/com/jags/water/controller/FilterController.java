@@ -5,6 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,20 @@ public class FilterController {
 		return "admin";
 	}
 
+	@GetMapping("/home")
+	public String agentHome(Model model) {
+		logger.info(">>> Inside Agent dashboard");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        logger.info("Agent Name: {}", 	userDetails.getUsername());
+		//Read from config map
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		logger.info("ticketServiceUri: " + ticketServiceUri);
+		model.addAttribute("serviceUri", ticketServiceUri);
+		model.addAttribute("agentName", userDetails.getUsername());
+		
+		return "home";
+	}
 	@GetMapping("/admin/add")
 	public String addTicket(Model model) {
 		logger.info(">>> Inside addTicket");

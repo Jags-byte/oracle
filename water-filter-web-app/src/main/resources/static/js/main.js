@@ -67,7 +67,6 @@ function deleteTicket(btn) {
         timeout: 600000,
         success: function (data) {
             console.log("Delete Successful: ", data);
-    		$(btn).show();
     		$(btn).closest("tr").remove();
       		$("#successAlert").removeClass("d-none");
 	    },

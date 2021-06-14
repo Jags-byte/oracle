@@ -65,6 +65,7 @@ public class TicketsController {
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
 	@GetMapping("tickets/agents/{agentName}")
 	@CircuitBreaker(name="all-tickets", fallbackMethod = "retrieveAllTicketsCbFallback")
 	@ApiOperation(value = "Find Agent Tickets", notes = "This API is for retrieving all Ticket details for a particualr Agent",
