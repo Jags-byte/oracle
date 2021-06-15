@@ -40,9 +40,9 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 8010
+  - port: 8020
     protocol: TCP
-    targetPort: 8010
+    targetPort: 8020
   selector:
     app: notification-service
   sessionAffinity: None
