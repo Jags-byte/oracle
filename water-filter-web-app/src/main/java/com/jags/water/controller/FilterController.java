@@ -29,10 +29,16 @@ public class FilterController {
 		List<Ticket> tickets = repairTicketService.retrieveAllTickets();
 		logger.info("After Ticket Service " + tickets);
 		model.addAttribute("tickets", tickets);
-		//Read from config map
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        logger.info("User Name: {}", 	userDetails.getUsername());
+
+        //Read from config map
 		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
 		logger.info("ticketServiceUri: " + ticketServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
+		model.addAttribute("userName", userDetails.getUsername());
 		
 		return "admin";
 	}
@@ -40,10 +46,12 @@ public class FilterController {
 	@GetMapping("/home")
 	public String agentHome(Model model) {
 		logger.info(">>> Inside Agent dashboard");
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
         logger.info("Agent Name: {}", 	userDetails.getUsername());
-		//Read from config map
+		
+        //Read from config map
 		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
 		String notificationServiceUri = System.getenv().getOrDefault("NOTIFICATION_SERVICE_EXT_URI", "http://localhost:8020");
 		logger.info("ticketServiceUri: " + ticketServiceUri);
@@ -58,10 +66,16 @@ public class FilterController {
 	@GetMapping("/admin/add")
 	public String addTicket(Model model) {
 		logger.info(">>> Inside addTicket");
-		//Read from config map
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        logger.info("User Name: {}", 	userDetails.getUsername());
+		
+        //Read from config map
 		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
 		logger.info("ticketServiceUri:: " + ticketServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
+		model.addAttribute("userName", userDetails.getUsername());
 		return "add";
 	}
 }

@@ -23,7 +23,7 @@ spec:
         app: repair-ticket-service
     spec:
       containers:
-      - image: jagsmdocker/repair-ticket-service-0.0.2-snapshot
+      - image: jagsmdocker/repair-ticket-service-0.0.3-snapshot
         imagePullPolicy: IfNotPresent
         name: repair-ticket-service
         envFrom:

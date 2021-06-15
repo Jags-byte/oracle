@@ -31,13 +31,13 @@ pipeline {
          stage('Build Docker Image') {
             steps {
                 dir("water-filter-web-app") {
-                    sh "docker build -t jagsmdocker/water-filter-web-app-0.0.2-snapshot ."
+                    sh "docker build -t jagsmdocker/water-filter-web-app-0.0.3-snapshot ."
                 }
                 dir("repair-ticket-service") {
-                    sh "docker build -t jagsmdocker/repair-ticket-service-0.0.2-snapshot ."
+                    sh "docker build -t jagsmdocker/repair-ticket-service-0.0.3-snapshot ."
                 }
                 dir("notification-service") {
-                    sh "docker build -t jagsmdocker/notification-service-0.0.2-snapshot ."
+                    sh "docker build -t jagsmdocker/notification-service-0.0.3-snapshot ."
                 }
             }
          }
@@ -48,13 +48,13 @@ pipeline {
             steps {
                 dir("water-filter-web-app") {
                 	sh "docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW"
-                	sh "docker push jagsmdocker/water-filter-web-app-0.0.2-snapshot"
+                	sh "docker push jagsmdocker/water-filter-web-app-0.0.3-snapshot"
                 }
                 dir("repair-ticket-service") {
-                    sh "docker push jagsmdocker/repair-ticket-service-0.0.2-snapshot"
+                    sh "docker push jagsmdocker/repair-ticket-service-0.0.3-snapshot"
                 }
                 dir("notification-service") {
-                    sh "docker push jagsmdocker/notification-service-0.0.2-snapshot"
+                    sh "docker push jagsmdocker/notification-service-0.0.3-snapshot"
                 }
             }
          }       

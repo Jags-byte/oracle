@@ -23,7 +23,7 @@ spec:
         app: notification-service
     spec:
       containers:
-      - image: jagsmdocker/notification-service-0.0.2-snapshot
+      - image: jagsmdocker/notification-service-0.0.3-snapshot
         imagePullPolicy: IfNotPresent
         name: notification-service
         envFrom:
