@@ -1,0 +1,626 @@
+Console Output
+Started by an SCM change
+Obtained build-configs/Jenkinsfile from git https://github.com/Jags-byte/oracle.git
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/PureSoft-Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/PureSoft-Pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Jags-byte/oracle.git # timeout=10
+Fetching upstream changes from https://github.com/Jags-byte/oracle.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- https://github.com/Jags-byte/oracle.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 69494df45e55122189c505640a51b743311a923e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 69494df45e55122189c505640a51b743311a923e # timeout=10
+Commit message: "Display UserID & Changed versions."
+ > git rev-list --no-walk 42cae43e27fd335b1e7a9f18c4f85048dd66d398 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/PureSoft-Pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Jags-byte/oracle.git # timeout=10
+Fetching upstream changes from https://github.com/Jags-byte/oracle.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- https://github.com/Jags-byte/oracle.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 69494df45e55122189c505640a51b743311a923e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 69494df45e55122189c505640a51b743311a923e # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 69494df45e55122189c505640a51b743311a923e # timeout=10
+Commit message: "Display UserID & Changed versions."
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app
+[Pipeline] {
+[Pipeline] sh
++ mvn -Dmaven.test.failure.ignore=false clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.jags.filter:water-filter-web-app >----------------
+[INFO] Building water-filter-web-app 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ water-filter-web-app ---
+[INFO] Deleting /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ water-filter-web-app ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 17 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ water-filter-web-app ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ water-filter-web-app ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ water-filter-web-app ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ water-filter-web-app ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.jags.water.UserServiceTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.399 s - in com.jags.water.UserServiceTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ water-filter-web-app ---
+[INFO] Building jar: /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app/target/water-filter-web-app-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.4.7:repackage (repackage) @ water-filter-web-app ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.205 s
+[INFO] Finished at: 2021-06-15T09:08:52Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service
+[Pipeline] {
+[Pipeline] sh
++ mvn -Dmaven.test.failure.ignore=false clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.jags.tickets:repair-ticket-service >---------------
+[INFO] Building repair-ticket-service 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ repair-ticket-service ---
+[INFO] Deleting /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ repair-ticket-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ repair-ticket-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/target/classes
+[INFO] /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/src/main/java/com/jags/tickets/exception/CustomizedExceptionHandler.java: /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/src/main/java/com/jags/tickets/exception/CustomizedExceptionHandler.java uses unchecked or unsafe operations.
+[INFO] /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/src/main/java/com/jags/tickets/exception/CustomizedExceptionHandler.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ repair-ticket-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ repair-ticket-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ repair-ticket-service ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.jags.tickets.RepairTicketServiceApplicationTests
+09:08:56.330 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+09:08:56.337 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+09:08:56.364 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.jags.tickets.RepairTicketServiceApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+09:08:56.372 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jags.tickets.RepairTicketServiceApplicationTests], using SpringBootContextLoader
+09:08:56.375 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jags.tickets.RepairTicketServiceApplicationTests]: class path resource [com/jags/tickets/RepairTicketServiceApplicationTests-context.xml] does not exist
+09:08:56.375 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jags.tickets.RepairTicketServiceApplicationTests]: class path resource [com/jags/tickets/RepairTicketServiceApplicationTestsContext.groovy] does not exist
+09:08:56.375 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jags.tickets.RepairTicketServiceApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+09:08:56.376 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jags.tickets.RepairTicketServiceApplicationTests]: RepairTicketServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:08:56.407 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.jags.tickets.RepairTicketServiceApplicationTests]
+09:08:56.448 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/target/classes/com/jags/tickets/RepairTicketServiceApplication.class]
+09:08:56.449 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jags.tickets.RepairTicketServiceApplication for test class com.jags.tickets.RepairTicketServiceApplicationTests
+09:08:56.515 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.jags.tickets.RepairTicketServiceApplicationTests]: using defaults.
+09:08:56.515 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+09:08:56.526 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@17a87e37, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3eeb318f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@20a14b55, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@39ad977d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6da00fb9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@a202ccb, org.springframework.test.context.transaction.TransactionalTestExecutionListener@20f12539, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@75b25825, org.springframework.test.context.event.EventPublishingTestExecutionListener@18025ced, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@13cf7d52, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3a3e4aff, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5d2a4eed, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@57459491, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f0846c6, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@77a98a6a]
+09:08:56.528 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@665df3c6 testClass = RepairTicketServiceApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@68b6f0d6 testClass = RepairTicketServiceApplicationTests, locations = '{}', classes = '{class com.jags.tickets.RepairTicketServiceApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@766653e6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7fc4780b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3ddc6915, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@6c61a903, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6a47b187, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@c33b74f], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+09:08:56.557 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.7)
+
+2021-06-15 09:08:56.850  INFO [repair-ticket-service,,] 13525 --- [           main] .j.t.RepairTicketServiceApplicationTests : Starting RepairTicketServiceApplicationTests using Java 11.0.11 on b61a1e0c39fc with PID 13525 (started by jenkins in /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service)
+2021-06-15 09:08:56.851  INFO [repair-ticket-service,,] 13525 --- [           main] .j.t.RepairTicketServiceApplicationTests : No active profile set, falling back to default profiles: default
+2021-06-15 09:08:57.897  INFO [repair-ticket-service,,] 13525 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-15 09:08:57.961  INFO [repair-ticket-service,,] 13525 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
+2021-06-15 09:08:58.298  INFO [repair-ticket-service,,] 13525 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7531e253-4743-3ce0-b5a0-57cf5a2a1c31
+2021-06-15 09:08:58.938  INFO [repair-ticket-service,,] 13525 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-06-15 09:08:59.090  INFO [repair-ticket-service,,] 13525 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-06-15 09:08:59.149  INFO [repair-ticket-service,,] 13525 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-15 09:08:59.188  INFO [repair-ticket-service,,] 13525 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-06-15 09:08:59.285  INFO [repair-ticket-service,,] 13525 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-15 09:08:59.377  INFO [repair-ticket-service,,] 13525 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-15 09:08:59.858  INFO [repair-ticket-service,,] 13525 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-15 09:08:59.866  INFO [repair-ticket-service,,] 13525 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-15 09:09:01.529  WARN [repair-ticket-service,,] 13525 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-15 09:09:01.717  INFO [repair-ticket-service,,] 13525 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-15 09:09:02.073  INFO [repair-ticket-service,,] 13525 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-15 09:09:04.423  INFO [repair-ticket-service,,] 13525 --- [           main] .j.t.RepairTicketServiceApplicationTests : Started RepairTicketServiceApplicationTests in 7.861 seconds (JVM running for 8.597)
+2021-06-15 09:09:04.476  INFO [repair-ticket-service,,] 13525 --- [           main] c.j.t.RepairTicketServiceApplication     : Inside RepairTicketServiceApplication
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.475 s - in com.jags.tickets.RepairTicketServiceApplicationTests
+2021-06-15 09:09:04.796  INFO [repair-ticket-service,,] 13525 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-15 09:09:04.797  INFO [repair-ticket-service,,] 13525 --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-15 09:09:04.799  WARN [repair-ticket-service,,] 13525 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2021-06-15 09:09:04.799 ERROR [repair-ticket-service,,] 13525 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2021-06-15 09:09:04.799  WARN [repair-ticket-service,,] 13525 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2021-06-15 09:09:04.799 ERROR [repair-ticket-service,,] 13525 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2021-06-15 09:09:04.800  WARN [repair-ticket-service,,] 13525 --- [extShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
+2021-06-15 09:09:04.800  INFO [repair-ticket-service,,] 13525 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-06-15 09:09:04.806  INFO [repair-ticket-service,,] 13525 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ repair-ticket-service ---
+[INFO] Building jar: /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service/target/repair-ticket-service-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.4.7:repackage (repackage) @ repair-ticket-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.274 s
+[INFO] Finished at: 2021-06-15T09:09:05Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service
+[Pipeline] {
+[Pipeline] sh
++ mvn -Dmaven.test.failure.ignore=false clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.jags.notification:notification-service >-------------
+[INFO] Building notification-service 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ notification-service ---
+[INFO] Deleting /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ notification-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ notification-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ notification-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ notification-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ notification-service ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.jags.notification.NotificationServiceApplicationTests
+09:09:09.516 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+09:09:09.527 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+09:09:09.561 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.jags.notification.NotificationServiceApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+09:09:09.570 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jags.notification.NotificationServiceApplicationTests], using SpringBootContextLoader
+09:09:09.573 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jags.notification.NotificationServiceApplicationTests]: class path resource [com/jags/notification/NotificationServiceApplicationTests-context.xml] does not exist
+09:09:09.574 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jags.notification.NotificationServiceApplicationTests]: class path resource [com/jags/notification/NotificationServiceApplicationTestsContext.groovy] does not exist
+09:09:09.574 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jags.notification.NotificationServiceApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+09:09:09.575 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jags.notification.NotificationServiceApplicationTests]: NotificationServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:09:09.608 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.jags.notification.NotificationServiceApplicationTests]
+09:09:09.653 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/target/classes/com/jags/notification/NotificationServiceApplication.class]
+09:09:09.654 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jags.notification.NotificationServiceApplication for test class com.jags.notification.NotificationServiceApplicationTests
+09:09:09.719 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.jags.notification.NotificationServiceApplicationTests]: using defaults.
+09:09:09.720 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+09:09:09.731 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3543df7d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7c541c15, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3542162a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@698122b2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4212a0c8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1e7aa82b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3b2c0e88, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5bd82fed, org.springframework.test.context.event.EventPublishingTestExecutionListener@c1bd0be, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@476b0ae6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1c6804cd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@655f7ea, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@549949be, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4b3a45f1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@17a87e37]
+09:09:09.734 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5e81e5ac testClass = NotificationServiceApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4189d70b testClass = NotificationServiceApplicationTests, locations = '{}', classes = '{class com.jags.notification.NotificationServiceApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@420a85c4, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1c852c0f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6b58b9e9, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4f704591, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4167d97b, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@72f926e6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+09:09:09.764 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.7)
+
+2021-06-15 09:09:10.057  INFO [notification-service,,] 13651 --- [           main] .j.n.NotificationServiceApplicationTests : Starting NotificationServiceApplicationTests using Java 11.0.11 on b61a1e0c39fc with PID 13651 (started by jenkins in /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service)
+2021-06-15 09:09:10.058  INFO [notification-service,,] 13651 --- [           main] .j.n.NotificationServiceApplicationTests : No active profile set, falling back to default profiles: default
+2021-06-15 09:09:10.979  INFO [notification-service,,] 13651 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-15 09:09:11.018  INFO [notification-service,,] 13651 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interfaces.
+2021-06-15 09:09:11.349  INFO [notification-service,,] 13651 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1527ebbc-207a-3117-9c94-c919d019d112
+2021-06-15 09:09:11.891  INFO [notification-service,,] 13651 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-06-15 09:09:12.024  INFO [notification-service,,] 13651 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-06-15 09:09:12.073  INFO [notification-service,,] 13651 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-15 09:09:12.111  INFO [notification-service,,] 13651 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-06-15 09:09:12.222  INFO [notification-service,,] 13651 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-15 09:09:12.310  INFO [notification-service,,] 13651 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-15 09:09:12.764  INFO [notification-service,,] 13651 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-15 09:09:12.770  INFO [notification-service,,] 13651 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-15 09:09:13.690  WARN [notification-service,,] 13651 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-15 09:09:14.072  INFO [notification-service,,] 13651 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-15 09:09:14.343  INFO [notification-service,,] 13651 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-15 09:09:15.902  INFO [notification-service,,] 13651 --- [           main] .j.n.NotificationServiceApplicationTests : Started NotificationServiceApplicationTests in 6.132 seconds (JVM running for 6.899)
+2021-06-15 09:09:15.940  INFO [notification-service,,] 13651 --- [           main] ication$$EnhancerBySpringCGLIB$$448f0b0c : >>> Inside NotificationServiceApplication
+2021-06-15 09:09:15.940  INFO [notification-service,,] 13651 --- [           main] ication$$EnhancerBySpringCGLIB$$448f0b0c : natsUri: nats://localhost:4222
+2021-06-15 09:09:15.968 ERROR [notification-service,,] 13651 --- [           main] ication$$EnhancerBySpringCGLIB$$448f0b0c : Failed to connect to NATS server: Unable to connect to NATS servers: nats://localhost:4222.
+
+java.io.IOException: Unable to connect to NATS servers: nats://localhost:4222.
+	at io.nats.client.impl.NatsConnection.connect(NatsConnection.java:239) ~[jnats-2.6.8.jar:2.6.8]
+	at io.nats.client.impl.NatsImpl.createConnection(NatsImpl.java:29) ~[jnats-2.6.8.jar:2.6.8]
+	at io.nats.client.Nats.createConnection(Nats.java:249) ~[jnats-2.6.8.jar:2.6.8]
+	at io.nats.client.Nats.connect(Nats.java:131) ~[jnats-2.6.8.jar:2.6.8]
+	at com.jags.notification.NotificationServiceApplication.run(NotificationServiceApplication.java:61) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:808) ~[spring-boot-2.4.7.jar:2.4.7]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:792) ~[spring-boot-2.4.7.jar:2.4.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:346) ~[spring-boot-2.4.7.jar:2.4.7]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:123) ~[spring-boot-test-2.4.7.jar:2.4.7]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138) ~[spring-test-5.3.8.jar:5.3.8]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1655) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at java.base/java.util.Optional.orElseGet(Optional.java:369) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.2.jar:5.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.2.jar:1.7.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:220) ~[junit-platform-launcher-1.3.1.jar:1.3.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:188) ~[junit-platform-launcher-1.3.1.jar:1.3.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:202) ~[junit-platform-launcher-1.3.1.jar:1.3.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:181) ~[junit-platform-launcher-1.3.1.jar:1.3.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128) ~[junit-platform-launcher-1.3.1.jar:1.3.1]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:150) ~[surefire-junit-platform-2.22.2.jar:2.22.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:124) ~[surefire-junit-platform-2.22.2.jar:2.22.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384) ~[surefire-booter-2.22.2.jar:2.22.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345) ~[surefire-booter-2.22.2.jar:2.22.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126) ~[surefire-booter-2.22.2.jar:2.22.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418) ~[surefire-booter-2.22.2.jar:2.22.2]
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.637 s - in com.jags.notification.NotificationServiceApplicationTests
+2021-06-15 09:09:16.106  INFO [notification-service,,] 13651 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-15 09:09:16.107  INFO [notification-service,,] 13651 --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-15 09:09:16.115  INFO [notification-service,,] 13651 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-06-15 09:09:16.120  INFO [notification-service,,] 13651 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ notification-service ---
+[INFO] Building jar: /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service/target/notification-service-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.4.7:repackage (repackage) @ notification-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.224 s
+[INFO] Finished at: 2021-06-15T09:09:17Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app
+[Pipeline] {
+[Pipeline] sh
++ docker build -t jagsmdocker/water-filter-web-app-0.0.3-snapshot .
+Sending build context to Docker daemon  59.74MB
+
+Step 1/4 : FROM openjdk:8
+ ---> eca41db787bd
+Step 2/4 : EXPOSE 8000
+ ---> Using cache
+ ---> 40880f12eb4f
+Step 3/4 : ADD target/water-filter-web-app-0.0.1-SNAPSHOT.jar water-filter-web-app.jar
+ ---> 1938e6d8d84f
+Step 4/4 : ENTRYPOINT ["java","-jar","/water-filter-web-app.jar"]
+ ---> Running in e9eede236fd3
+Removing intermediate container e9eede236fd3
+ ---> 6fc3db449366
+Successfully built 6fc3db449366
+Successfully tagged jagsmdocker/water-filter-web-app-0.0.3-snapshot:latest
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service
+[Pipeline] {
+[Pipeline] sh
++ docker build -t jagsmdocker/repair-ticket-service-0.0.3-snapshot .
+Sending build context to Docker daemon  56.21MB
+
+Step 1/4 : FROM openjdk:8
+ ---> eca41db787bd
+Step 2/4 : EXPOSE 8010
+ ---> Using cache
+ ---> 6dbe6b979e43
+Step 3/4 : ADD target/repair-ticket-service-0.0.1-SNAPSHOT.jar repair-ticket-service.jar
+ ---> ed4ff9c96261
+Step 4/4 : ENTRYPOINT ["java","-jar","/repair-ticket-service.jar"]
+ ---> Running in 3e720e54d17f
+Removing intermediate container 3e720e54d17f
+ ---> ec486ceefeed
+Successfully built ec486ceefeed
+Successfully tagged jagsmdocker/repair-ticket-service-0.0.3-snapshot:latest
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service
+[Pipeline] {
+[Pipeline] sh
++ docker build -t jagsmdocker/notification-service-0.0.3-snapshot .
+Sending build context to Docker daemon  55.22MB
+
+Step 1/4 : FROM openjdk:8
+ ---> eca41db787bd
+Step 2/4 : EXPOSE 8020
+ ---> Using cache
+ ---> 6677df48b6f2
+Step 3/4 : ADD target/notification-service-0.0.1-SNAPSHOT.jar notification-service.jar
+ ---> 06878bdbe85f
+Step 4/4 : ENTRYPOINT ["java","-jar","/notification-service.jar"]
+ ---> Running in b32fc57f307d
+Removing intermediate container b32fc57f307d
+ ---> 6905e581c419
+Successfully built 6905e581c419
+Successfully tagged jagsmdocker/notification-service-0.0.3-snapshot:latest
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Image)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_HUB_LOGIN or $DOCKER_HUB_LOGIN_PSW
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/water-filter-web-app
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [DOCKER_HUB_LOGIN_PSW, DOCKER_HUB_LOGIN_USR]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ docker login --username=jagsmdocker --password=****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/jenkins_home/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] sh
++ docker push jagsmdocker/water-filter-web-app-0.0.3-snapshot
+Using default tag: latest
+The push refers to repository [docker.io/jagsmdocker/water-filter-web-app-0.0.3-snapshot]
+6b0165d7a4a6: Preparing
+bd87f5884754: Preparing
+4a64f1e3a7a1: Preparing
+3fc095fab4a2: Preparing
+685934357c89: Preparing
+ccb9b68523fd: Preparing
+00bcea93703b: Preparing
+688e187d6c79: Preparing
+00bcea93703b: Waiting
+ccb9b68523fd: Waiting
+688e187d6c79: Waiting
+685934357c89: Mounted from jagsmdocker/repair-ticket-service-0.0.2-snapshot
+4a64f1e3a7a1: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+3fc095fab4a2: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+bd87f5884754: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+ccb9b68523fd: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+00bcea93703b: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+688e187d6c79: Mounted from jagsmdocker/notification-service-0.0.2-snapshot
+6b0165d7a4a6: Pushed
+latest: digest: sha256:26490b9c674a9fc2a24fc39816d48b8e6046c80a21a2a209650ab87821c531bc size: 2006
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/repair-ticket-service
+[Pipeline] {
+[Pipeline] sh
++ docker push jagsmdocker/repair-ticket-service-0.0.3-snapshot
+Using default tag: latest
+The push refers to repository [docker.io/jagsmdocker/repair-ticket-service-0.0.3-snapshot]
+0283280149b4: Preparing
+bd87f5884754: Preparing
+4a64f1e3a7a1: Preparing
+3fc095fab4a2: Preparing
+685934357c89: Preparing
+ccb9b68523fd: Preparing
+00bcea93703b: Preparing
+688e187d6c79: Preparing
+00bcea93703b: Waiting
+688e187d6c79: Waiting
+ccb9b68523fd: Waiting
+685934357c89: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+4a64f1e3a7a1: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+3fc095fab4a2: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+bd87f5884754: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+00bcea93703b: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+ccb9b68523fd: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+688e187d6c79: Mounted from jagsmdocker/water-filter-web-app-0.0.3-snapshot
+0283280149b4: Pushed
+latest: digest: sha256:2f8f5c5ce5901de540e0733f1733f77119e88584707f72162bef05697c0c1e78 size: 2006
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/PureSoft-Pipeline/notification-service
+[Pipeline] {
+[Pipeline] sh
++ docker push jagsmdocker/notification-service-0.0.3-snapshot
+Using default tag: latest
+The push refers to repository [docker.io/jagsmdocker/notification-service-0.0.3-snapshot]
+bf5cc52b94c9: Preparing
+bd87f5884754: Preparing
+4a64f1e3a7a1: Preparing
+3fc095fab4a2: Preparing
+685934357c89: Preparing
+ccb9b68523fd: Preparing
+00bcea93703b: Preparing
+688e187d6c79: Preparing
+ccb9b68523fd: Waiting
+00bcea93703b: Waiting
+688e187d6c79: Waiting
+685934357c89: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+bd87f5884754: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+3fc095fab4a2: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+4a64f1e3a7a1: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+688e187d6c79: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+00bcea93703b: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+ccb9b68523fd: Mounted from jagsmdocker/repair-ticket-service-0.0.3-snapshot
+bf5cc52b94c9: Pushed
+latest: digest: sha256:6f0425bdf3829b26448d054dc3003fb0aff89aa0d81c87c917555bfc4656d359 size: 2006
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
