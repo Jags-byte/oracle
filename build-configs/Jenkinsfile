@@ -34,10 +34,10 @@ pipeline {
                     sh "docker build -t jagsmdocker/water-filter-web-app-0.0.2-snapshot ."
                 }
                 dir("repair-ticket-service") {
-                    sh "docker build -t jagsmdocker/repair-ticket-service-0-0-2-snapshot ."
+                    sh "docker build -t jagsmdocker/repair-ticket-service-0.0.2-snapshot ."
                 }
                 dir("notification-service") {
-                    sh "docker build -t jagsmdocker/notification-service-0-0-2-snapshot ."
+                    sh "docker build -t jagsmdocker/notification-service-0.0.2-snapshot ."
                 }
             }
          }
