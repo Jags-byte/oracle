@@ -136,18 +136,12 @@ function retrieveNotifications() {
 			      		$("#notificationAlert").removeClass("d-none");
 			      	}
 				});
-				//$("#loadingSpinner").remove();
-	      		//$("#ticketDetailsTable").removeClass("d-none");
 	      	} catch(e) {
 				console.log("Notification Fetch Failed! ", e);
-	      		//$("#loadingSpinner").remove();
-	      		//$("#noResultAlert").removeClass("d-none");
 			}
 	    },
         error: function (e) {
 			console.log("Fetch Failed! ", e);
-      		$("#loadingSpinner").remove();
-      		$("#noResultAlert").removeClass("d-none");
         }
     });
 }

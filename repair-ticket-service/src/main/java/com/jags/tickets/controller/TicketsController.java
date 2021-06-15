@@ -90,7 +90,7 @@ public class TicketsController {
 	public ResponseEntity<Ticket> createTicket(@RequestBody TicketModel ticket) {
 		logger.info(">>> Entering create tickets service");
 		Ticket t = ticketService.createTicket(ticket);
-		eventPublisher.publishTicketCreationEvent(t.getAgentName(), "New Ticket: " + t.getTicketId());
+		eventPublisher.publishTicketCreationEvent(t.getAgentName(), t.getTicketId() + ": " + t.getTicketDescription());
 		return new ResponseEntity<>(t, HttpStatus.CREATED);
 		
 		
