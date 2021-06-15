@@ -30,7 +30,7 @@ public class FilterController {
 		logger.info("After Ticket Service " + tickets);
 		model.addAttribute("tickets", tickets);
 		//Read from config map
-		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
 		logger.info("ticketServiceUri: " + ticketServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
 		
@@ -44,8 +44,8 @@ public class FilterController {
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
         logger.info("Agent Name: {}", 	userDetails.getUsername());
 		//Read from config map
-		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
-		String notificationServiceUri = System.getenv().getOrDefault("NOTIFICATION_SERVICE_URI", "http://localhost:8020");
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
+		String notificationServiceUri = System.getenv().getOrDefault("NOTIFICATION_SERVICE_EXT_URI", "http://localhost:8020");
 		logger.info("ticketServiceUri: " + ticketServiceUri);
 		logger.info("notificationServiceUri: " + notificationServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
@@ -59,7 +59,7 @@ public class FilterController {
 	public String addTicket(Model model) {
 		logger.info(">>> Inside addTicket");
 		//Read from config map
-		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_URI", "http://localhost:8010");
+		String ticketServiceUri = System.getenv().getOrDefault("REPAIR_TICKET_SERVICE_EXT_URI", "http://localhost:8010");
 		logger.info("ticketServiceUri:: " + ticketServiceUri);
 		model.addAttribute("serviceUri", ticketServiceUri);
 		return "add";

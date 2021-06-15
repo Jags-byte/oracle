@@ -63,7 +63,7 @@ public class TicketsController {
 		return new ResponseEntity<>(ticket, HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
+	@CrossOrigin(origins = "${FILTER_APP_EXT_URI:http://localhost:8000}")
 	@DeleteMapping("tickets/{ticketId}")
 	@ApiOperation(value = "Delete Ticket", notes = "This API is for deleting a particular ticket.",
 			tags = {"Ticket"}, httpMethod = "GET")
@@ -73,7 +73,7 @@ public class TicketsController {
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 	}
 	
-	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
+	@CrossOrigin(origins = "${FILTER_APP_EXT_URI:http://localhost:8000}")
 	@GetMapping("tickets/agents/{agentName}")
 	@CircuitBreaker(name="all-tickets", fallbackMethod = "retrieveAllTicketsCbFallback")
 	@ApiOperation(value = "Find Agent Tickets", notes = "This API is for retrieving all Ticket details for a particualr Agent",
@@ -83,7 +83,7 @@ public class TicketsController {
 		return new ResponseEntity<>(ticketService.findTicketsByUser(agentName), HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
+	@CrossOrigin(origins = "${FILTER_APP_EXT_URI:http://localhost:8000}")
 	@PostMapping("tickets")
 	@ApiOperation(value = "Create Tickets", notes = "This API is for creating new tickets and assign that to an Agent.",
 			tags = {"Ticket"}, httpMethod = "GET")
@@ -96,7 +96,7 @@ public class TicketsController {
 		
 	}
 
-	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
+	@CrossOrigin(origins = "${FILTER_APP_EXT_URI:http://localhost:8000}")
 	@PostMapping("tickets/status")
 	@ApiOperation(value = "Update Ticket Status", notes = "This API is for udpating Ticket Status.",
 			tags = {"Ticket"}, httpMethod = "GET")

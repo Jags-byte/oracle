@@ -50,8 +50,8 @@ spec:
 ---
 apiVersion: v1
 data:
-  FILTER_APP_URI: http://34.123.104.178:8000
-  NATS_SERVER_URI: nats://35.222.10.147:4222
+  FILTER_APP_EXT_URI: http://34.123.104.178:8000
+  NATS_SERVER_URI: nats://nats-server:4222
 kind: ConfigMap
 metadata:
   name: repair-ticket-service

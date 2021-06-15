@@ -27,7 +27,7 @@ public class NotificationController {
 	@Autowired
 	NotificationService notificationService;
 	
-	@CrossOrigin(origins = "${FILTER_APP_URI:http://localhost:8000}")
+	@CrossOrigin(origins = "${FILTER_APP_EXT_URI:http://localhost:8000}")
 	@GetMapping("notifications/{username}/{startTime}")
 	@ApiOperation(value = "Retrieve Notifications", notes = "This API is for retrieving notifications for a user",
 			tags = {"Ticket"}, httpMethod = "GET")

@@ -17,9 +17,6 @@ http://localhost:8010/tickets
 http://localhost:8010/tickets/status
 http://localhost:8010/tickets/assign
 
-"${REPAIR_TICKET_SERVICE_URI:http://localhost}:8010"
-"${FILTER_APP_URI:http://localhost}:8000")
-
 jagsmdocker/repair-ticket-service
 
 Kubernetes
@@ -31,10 +28,10 @@ http://104.154.178.233:8010/tickets/100
 http://104.154.178.233:8010/tickets/agents/agent3
 
 App: 34.123.104.178
-
+http://34.123.104.178:8000
 
 NATS
-~~~~~~~~~~~~`
+~~~~~
 kubectl create deployment nats-server --image=nats
 kubectl expose deployment nats-server --type=LoadBalancer --port=4222
 
@@ -43,3 +40,26 @@ pub com.jags.ticket 100
 <Message Body>
 
 jnats://localhost:4222
+
+Notification Service
+~~~~~~~~~~~~~~~~~~~~~
+34.123.237.101
+http://34.123.237.101:8020/notifications/agent1/0
+
+Config Maps
+~~~~~~~~~~~
+Water Filter Web App
+~~~~~~~~~~~~~~~~~~~~~
+  REPAIR_TICKET_SERVICE_EXT_URI: http://104.154.178.233:8010
+  REPAIR_TICKET_SERVICE_URI: http://repair-ticket-service:8010
+  NOTIFICATION_SERVICE_EXT_URI: http://34.123.237.101:8020
+
+Repair Ticket
+~~~~~~~~~~~~~
+  FILTER_APP_EXT_URI: http://34.123.104.178:8000
+  NATS_SERVER_URI: nats://nats-server:4222
+
+Notification Service
+~~~~~~~~~~~~~~~~~~~~
+  FILTER_APP_EXT_URI: http://34.123.104.178:8000
+  NATS_SERVER_URI: nats://nats-server:4222
