@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: repair-ticket-service
+  name: repair-ticket-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repair-ticket-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: repair-ticket-service
+    spec:
+      containers:
+      - image: jagsmdocker/repair-ticket-service-0.0.3-snapshot
+        imagePullPolicy: IfNotPresent
+        name: repair-ticket-service
+        envFrom:
+          - configMapRef:
+              name: repair-ticket-service
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: repair-ticket-service
+  name: repair-ticket-service
+  namespace: default
+spec:
+  ports:
+  - port: 8010
+    protocol: TCP
+    targetPort: 8010
+  selector:
+    app: repair-ticket-service
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: v1
+data:
+  FILTER_APP_EXT_URI: http://152.70.74.89:8000
+  NATS_SERVER_URI: nats://nats-server:4222
+kind: ConfigMap
+metadata:
+  name: repair-ticket-service
+  namespace: default

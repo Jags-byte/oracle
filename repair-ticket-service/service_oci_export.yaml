@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-08-05T17:48:16Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: repair-ticket-service
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":8010,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2021-08-05T17:48:16Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"service.kubernetes.io/load-balancer-cleanup": {}
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: cloud-provider-oci
+    operation: Update
+    time: "2021-08-05T17:48:54Z"
+  name: repair-ticket-service
+  namespace: default
+  resourceVersion: "37292"
+  uid: 469d0e80-e2ee-42ee-afd4-9daceeb3f34b
+spec:
+  clusterIP: 10.96.241.33
+  clusterIPs:
+  - 10.96.241.33
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 31167
+    port: 8010
+    protocol: TCP
+    targetPort: 8010
+  selector:
+    app: repair-ticket-service
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 152.70.69.237
