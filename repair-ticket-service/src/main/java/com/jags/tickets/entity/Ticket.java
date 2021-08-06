@@ -45,6 +45,14 @@ public class Ticket {
 	}
 
 
+	public Ticket(int ticketId, String agentName, String ticketDescription) {
+		this.ticketId = ticketId;
+		this.agentName = agentName;
+		this.ticketDescription = ticketDescription;
+		ticketStatus = Constants.TICKET_ASSIGNED;
+	}
+
+
 	/**
 	 * @return the ticketId
 	 */

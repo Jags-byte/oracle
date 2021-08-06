@@ -54,6 +54,12 @@ Water Filter Web App
   REPAIR_TICKET_SERVICE_URI: http://repair-ticket-service:8010
   NOTIFICATION_SERVICE_EXT_URI: http://34.123.237.101:8020
 
+OCI: 
+Water Filter App     : http://152.70.74.89:8000
+Repair Ticket Service: http://152.70.74.71:8010/
+Notification Service: http://152.70.69.14:8020/
+
+
 Repair Ticket
 ~~~~~~~~~~~~~
   FILTER_APP_EXT_URI: http://34.123.104.178:8000

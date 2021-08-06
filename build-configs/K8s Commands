@@ -4,3 +4,22 @@ gcloud auth login
 #Connect to Cluster
 gcloud container clusters get-credentials jags-cluster --zone us-central1-c --project peak-vista-313817
 
+
+#OCI
+#OCI CLI configurations to be done with OCID for Tenancy and User
+
+#Access Cluster
+oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.ap-hyderabad-1.aaaaaaaa5xjpztumk2hqg3tobhh5vbl6xwe3wahzdbltpxjkmchzb6ttqpwq --file C:\Users\jagad\.kube\config --region ap-hyderabad-1 --token-version 2.0.0  --kube-endpoint PUBLIC_ENDPOINT
+
+#Deploying Water Filter App Images
+kubectl create deployment repair-ticket-service --image=jagsmdocker/repair-ticket-service-0.0.3-snapshot
+kubectl expose deployment repair-ticket-service --type=LoadBalancer --port=8010
+
+kubectl get deployment repair-ticket-service -o yaml >> deployment_oci_export.yaml
+kubectl get service repair-ticket-service -o yaml >> service_oci_export.yaml
+
+kubectl apply -f deployment.yaml
+
+#Deploying NATS server
+kubectl create deployment nats-server --image=nats
+kubectl expose deployment nats-server --type=LoadBalancer --port=4222
